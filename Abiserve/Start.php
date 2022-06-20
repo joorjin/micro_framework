@@ -1,14 +1,26 @@
 <?php
 
 class Start{
+    
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public static function main(){
         mkdir(__DIR__.'/../app');
         mkdir('app/Controllers');
+        copy(__DIR__.'/sample/Controllers/TestController.php',__DIR__.'/../app/Controllers/TestController.php');
         mkdir('app/Models');
+        mkdir('Routes');
         fopen('.env','w');
-        // copy(__DIR__.'/Start/Controllers/TestController.php', __DIR__.'/../app/Controllers/TestController.php');
-        // copy(__DIR__.'/Start/Models/Test.php', __DIR__.'/../app/Models/Test.php');
+        fopen('Routes/route.php','w');
+        copy(__DIR__.'/sample/Routes/route.php',__DIR__.'/../Routes/route.php');
+        copy(__DIR__.'/sample/index.php',__DIR__.'/../index.php');
+        fopen('index.php','w');
+        copy(__DIR__.'/sample/index.php',__DIR__.'/../index.php');
         system('composer install');
-        echo '**************end**************';
+        copy(__DIR__.'/sample/Facade.php',__DIR__.'/../vendor/illuminate/support/Facades/Facade.php');
+        echo("__________________________________✔️  The operation was successful  ✔️__________________________________");
     }
 }

@@ -2,7 +2,7 @@
 if (strstr($argv[1], ':' )) {
     list($class , $method) = explode(':',$argv[1]);
     require_once __DIR__.DIRECTORY_SEPARATOR.'Abiserve'.DIRECTORY_SEPARATOR.$class.'.php';
-    $class::$method($argv[2]);
+    ucwords($class)::$method($argv[2]);
 }else{
     require_once __DIR__.'/Abiserve/'.$argv[1].'.php';
     Start::main();
