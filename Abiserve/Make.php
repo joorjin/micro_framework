@@ -1,7 +1,7 @@
 <?php
 
 
-include_once __DIR__.'/Base/BaseMake.php';
+include_once __DIR__ . '/Base/BaseMake.php';
 
 class Make
 {
@@ -13,7 +13,7 @@ class Make
      */
     public static function Controller(string $name)
     {
-        BaseMake::Maker($name.'Controller','Controller');
+        BaseMake::Maker($name . 'Controller', 'Controller');
     }
 
     /**
@@ -22,9 +22,25 @@ class Make
      * @param string $name
      * @return void
      */
-    public static function Model(string $name){
-        BaseMake::Maker($name,'Model');
-        // copy(__DIR__.'/sample/Models/Test.php', __DIR__.'/../app/Models/'.$name.'.php');
-        // echo("__________________________________✔️  The operation was successful  ✔️__________________________________");
+    public static function Model(string $name)
+    {
+        BaseMake::Maker($name, 'Model');
     }
+
+    /**
+     * @param string $name
+     * @return void
+     */
+    public static function App(string $name)
+    {
+        mkdir(__DIR__ . '/../' . $name . 'App');
+        mkdir(__DIR__ . '/../' . $name . 'App/app');
+        mkdir(__DIR__ . '/../' . $name . 'App/app/Controllers');
+        copy(__DIR__ . '/sample/Controllers/TestController.php', __DIR__ . '/../' . $name . 'App/app/Controllers/TestController.php');
+        mkdir(__DIR__ . '/../' . $name . 'App/app/Models');
+        copy(__DIR__ . '/sample/Models/Test.php', __DIR__ . '/../' . $name . 'App/app/Models/Test.php');
+//        mkdir('app/Models');
+//        mkdir('Routes');
+    }
+
 }
